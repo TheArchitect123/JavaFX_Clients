@@ -6,6 +6,6 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		System.out.print("MMAHAHAA");
-	    ApplicationMngr.launch(args);
+	    new ApplicationMngr().initializeApplication(args);
 	}
 }

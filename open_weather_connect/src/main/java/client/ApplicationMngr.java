@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 public class ApplicationMngr extends Application {
 
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
@@ -26,5 +27,9 @@ public class ApplicationMngr extends Application {
         root.getChildren().add(btn);
         primaryStage.setScene(new Scene(root, 300, 250));
         primaryStage.show();
+	}
+	
+	public void initializeApplication(String[] args) {
+		ApplicationMngr.launch(args);
 	}
 }
