@@ -1,5 +1,11 @@
 package client.controllers;
 
-public class AddressViewerController {
+import javafx.scene.Scene;
 
+public class AddressViewerController extends BaseController {
+	@Override
+	Scene loadSceneIntoMemory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
