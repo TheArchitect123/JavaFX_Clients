@@ -1,44 +1,38 @@
 package client;
 
+import client.controllers.*; 
+
 //JavaFX Controls & UI Toolkit
-import javafx.application.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 //Constants
 import constants.AppInformation;
+import de.saxsys.mvvmfx.guice.MvvmfxGuiceApplication;
 
-//Helpers
-import helpers.*;
+public class ApplicationMngr extends MvvmfxGuiceApplication {
 
-public class ApplicationMngr extends Application {
+	DashboardController _dashboard;
 
-
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-
-		//Add the pages that belong to this primary stage
-		primaryStage.setTitle("Hello World!");
-		Button btn = new Button();
-		btn.setText("Say 'Hello World'");
-		btn.setOnAction(new EventHandler<ActionEvent>() {
-
-			final String test = "Hello World!";
-			@Override        
-			public void handle(ActionEvent event) {          
-				System.out.println(test);
-			}
-		});       
+	
+	private void initializeControllers() {
+		_dashboard = new DashboardController();
+	}
+	
+	private void initializeViewModels() {
 		
-		
-		primaryStage.show();
 	}
 
 	public void initializeApplication(String[] args) {
+		initializeControllers();
+		initializeViewModels();
 		ApplicationMngr.launch(args);
+	}
+
+	@Override
+	public void startMvvmfx(Stage stage) throws Exception {
+		stage.setTitle(AppInformation.AppName);
+		
+		stage.setScene(_dashboard.loadSceneIntoMemory());
+		stage.show();
 	}
 }
