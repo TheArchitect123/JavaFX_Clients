@@ -1,18 +1,20 @@
 package client;
 
-import client.controllers.*; 
-
+import client.controllers.*;
+import javafx.application.Application;
 //JavaFX Controls & UI Toolkit
 import javafx.stage.Stage;
 
 //Constants
 import constants.AppInformation;
-import de.saxsys.mvvmfx.guice.MvvmfxGuiceApplication;
 
-public class ApplicationMngr extends MvvmfxGuiceApplication {
+public class ApplicationMngr extends Application {
 
 	DashboardController _dashboard;
 
+	public ApplicationMngr() {
+		
+	}
 	
 	private void initializeControllers() {
 		_dashboard = new DashboardController();
@@ -23,16 +25,17 @@ public class ApplicationMngr extends MvvmfxGuiceApplication {
 	}
 
 	public void initializeApplication(String[] args) {
-		initializeControllers();
-		initializeViewModels();
 		ApplicationMngr.launch(args);
 	}
 
 	@Override
-	public void startMvvmfx(Stage stage) throws Exception {
-		stage.setTitle(AppInformation.AppName);
+	public void start(Stage primaryStage) throws Exception {
+
+		initializeControllers();
+		initializeViewModels();
 		
-		stage.setScene(_dashboard.loadSceneIntoMemory());
-		stage.show();
+		primaryStage.setTitle(AppInformation.AppName);
+		primaryStage.setScene(_dashboard.loadSceneIntoMemory());
+		primaryStage.show();
 	}
 }

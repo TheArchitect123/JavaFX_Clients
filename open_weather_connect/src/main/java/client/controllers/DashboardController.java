@@ -12,7 +12,6 @@ import helpers.ScreenHelper;
 
 public class DashboardController extends BaseController {
 
-	//public ListView DataList;
 	
 	@Override
 	public Scene loadSceneIntoMemory() {
